@@ -46,4 +46,30 @@
 - ApplicationContext adalah turunan dari ResourceLoader, sehingga kita juga bisa menggunakan ApplicationContext untuk
   mendapatkan Resource
 - Atau kita juga bisa menggunakan ResourceLoaderAware untuk mendapatkan ResourceLoader secara otomatis
-- https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ResourceLoaderAware.html 
+- https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/ResourceLoaderAware.html
+
+## Message Source
+
+* Spring memiliki fitur yang bernama Message Source, yaitu fitur untuk mengambil message dari resource
+* https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/MessageSource.html
+* MessageSource mengkombinasikan Properties dan MessageFormat, sehingga kita tidak perlu melakukannya secara manual
+  seperti yang pernah kita praktekan di kelas Java Internationalization
+
+## Properties
+
+* Pada Kelas Java, kita sudah belajar tentang Properties dan juga cara melakukan Internationalization menggunakan
+  Properties
+* Di Spring, kita juga melakukan hal yang sama, dengan cara yang lebih baik, tidak perlu melakukannya secara manual
+
+## Message Source Implementation
+
+* MessageSource adalah sebuah interface, untuk menggunakannya, kita butuh implementasi class nya
+* Kita tidak butuh membuatnya secara manual, kita bisa menggunakan class implementasi yang sudah disediakan oleh Spring,
+  yaitu ResourceBundleMessageSource
+* https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/support/ResourceBundleMessageSource.html
+
+## Kode : Properties
+
+```properties
+
+```
