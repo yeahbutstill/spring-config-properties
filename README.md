@@ -101,3 +101,22 @@
 * Environment juga bisa digunakan untuk mengakses data environment variable pada sistem operasi
 * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html
 * Kita bisa menggunakan EnvironmentAware jika ingin mendapatkan object Environment
+
+## Value
+
+* Value merupakan Annotation yang bisa kita gunakan untuk melakukan inject data dari properties ke field yang kita
+  tandai
+* https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/beans/factory/annotation/Value.html
+
+## Value Application Properties
+
+* Annotation Value bisa kita gunakan untuk mengambil data dari application properties
+* Kita bisa menggunakan kode ${nama.properties.nya}
+* Secara otomatis akan diambil valuenya, dan secara otomatis akan melakukan konversi juga
+
+## Value System Variable
+
+* Selain application properties, Annotation Value juga bisa digunakan untuk mengambil data dari system properties atau
+  environment variable
+* Caranya sama seperti mengambil application properties
+* Secara otomatis akan diambil valuenya, dan secara otomatis akan melakukan konversi juga
