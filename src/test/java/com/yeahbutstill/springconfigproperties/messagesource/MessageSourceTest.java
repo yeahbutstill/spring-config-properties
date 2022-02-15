@@ -19,7 +19,7 @@ class MessageSourceTest {
 
   @Autowired private ApplicationContext applicationContext;
 
-  @Autowired private MessageSource messageSource;
+  private MessageSource messageSource;
 
   @BeforeEach
   void setUp() {
@@ -35,8 +35,9 @@ class MessageSourceTest {
 
   @Test
   void testIndonesiaLocale() {
-    String message = messageSource.getMessage("hello", new Object[] {"Dani"}, new Locale("in_ID"));
-    Assertions.assertEquals("Hello Dani", message);
+    String message =
+        messageSource.getMessage("hello", new Object[] {"Dani"}, new Locale("in", "ID"));
+    Assertions.assertEquals("Halo Dani", message);
   }
 
   @SpringBootApplication

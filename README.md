@@ -68,8 +68,15 @@
   yaitu ResourceBundleMessageSource
 * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/support/ResourceBundleMessageSource.html
 
-## Kode : Properties
+## Spring Boot Message Source
 
-```properties
+* Jika kita menggunakan Spring Boot, secara otomatis Spring Boot telah membuat Message Source secara otomatis, kita
+  tidak perlu membuat bean untuk Message Source secara manual
+* Selain itu secara default, Spring Boot akan membuat Message Source dengan mengambil data resource bundle di
+  messages.properties
 
-```
+## Message Source Aware
+
+* Jika kita ingin menggunakan MessageSource, kita juga bisa menggunakan MessageSourceAware
+* https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/MessageSourceAware.html
+* Atau sebenarnya, ApplicationContext adalah turunan dari MessageSource
