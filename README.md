@@ -140,3 +140,33 @@
   properties file yang kita mau di unit test
 * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/context/TestPropertySource.html
 * Jika membutuhkan properties file lebih dari satu, kita bisa gunakan annotation TestPropertySources
+
+## Profile
+
+* Profile merupakan fitur di Spring yang bisa kita gunakan untuk menentukan component jalan di profile mana
+* Profile cocok sekali ketika kita butuh component berbeda pada kondisi tertentu, misal kita buat component untuk
+  koneksi ke Memory Database, tapi jika di Local misal, kita ingin component nya diganti dengan koneksi di memory
+  aplikasi saja
+* Untuk menandai sebuah component dengan informasi Profile, kita bisa menggunakan Annotation Profile
+* https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/context/annotation/Profile.html
+
+## Profile Properties
+
+* Untuk menentukan profile apa yang berjalan, kita bisa menentukannya di application properties dengan menggunakan key
+  spring.profiles.active
+* Dimana kita bisa menentukan active profile lebih dari satu jika kita mau
+
+## Active Profile
+
+* Kadang jika harus mengubah profile di application properties akan menyulitkan ketika kita membuat unit test untuk
+  beberapa profile
+* Untuk mengubah profile di unit test, kita bisa menggunakan annotation ActiveProfiles
+* https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/test/context/ActiveProfiles.html
+
+## Profile di Environment
+
+* Kadang kita ingin mendapatkan profile pada saat aplikasi berjalan
+* Jika ada kasus seperti ini, kita bisa menggunakan Environment
+* Terdapat method getActiveProfiles() untuk mendapatkan profile yang sedang aktif
+* https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html#getActiveProfiles-- 
+
