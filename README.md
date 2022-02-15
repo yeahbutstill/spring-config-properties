@@ -168,5 +168,12 @@
 * Kadang kita ingin mendapatkan profile pada saat aplikasi berjalan
 * Jika ada kasus seperti ini, kita bisa menggunakan Environment
 * Terdapat method getActiveProfiles() untuk mendapatkan profile yang sedang aktif
-* https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html#getActiveProfiles-- 
+* https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html#getActiveProfiles--
 
+# Profile Properties File
+
+* Saat kita menggunakan fitur profile, kita juga bisa membuat file properties sesuai dengan profile yang aktif
+* Penamaan properties file adalah application-{profile}.properties
+* Misal jika active profile adalah dev, maka application-dev.properties akan di load
+* Jika active profile lebih dari satu, maka semua files properties tiap profile akan di load
+* Jangan lupa application.properties akan tetap di load disemua profile
