@@ -170,10 +170,43 @@
 * Terdapat method getActiveProfiles() untuk mendapatkan profile yang sedang aktif
 * https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/env/Environment.html#getActiveProfiles--
 
-# Profile Properties File
+## Profile Properties File
 
 * Saat kita menggunakan fitur profile, kita juga bisa membuat file properties sesuai dengan profile yang aktif
 * Penamaan properties file adalah application-{profile}.properties
 * Misal jika active profile adalah dev, maka application-dev.properties akan di load
 * Jika active profile lebih dari satu, maka semua files properties tiap profile akan di load
 * Jangan lupa application.properties akan tetap di load disemua profile
+
+## Configuration Properties
+
+* Spring Boot memiliki sebuah fitur canggih bernama Configuration Properties
+* Fitur ini bisa digunakan melakukan binding secara otomatis key yang ada di application properties ke Java Bean
+  property secara otomatis
+* Namun untuk menggunakan fitur ini, kita perlu menambahkan dependency yang dibutuhkan, yaitu
+  spring-boot-configuration-processor
+
+## Configuration Properties Annotation
+
+* Untuk menandai Java Bean agar secara otomatis di binding ke Application Properties, kita perlu menandai class nya
+  dengan annotation ConfigurationProperties
+* https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/context/properties/ConfigurationProperties.html
+* Selanjutnya kita perlu menentukan prefix untuk key di application properties nya
+
+## Spring Configuration Metadata
+
+* Sebenarnya, untuk membuat Spring melakukan automatic binding ke Configuration Properties, kita harus membuat sebuah
+  file metadata
+* Namun hal tersebut tidak perlu kita lakukan manual, secara otomatis ketika menambahkan dependency configuration
+  properties, dependency tersebut akan melakukan auto generate file metadata dari class yang kita tandai menggunakan
+  annotation ConfigurationProperties
+* Cara untuk membuat file metadata secara auto generate cukup kita lakukan kompilasi saja project kita, misal jika
+  menggunakan maven, tinggal gunakan perintah : mvn compile
+
+## Enable Configuration Properties
+
+* Secara default, Configuration Properties tidak akan berjalan jika kita tidak beritahukan ke Spring Boot Application
+* Kita perlu memberitahu bahwa kita membuat class Configuration Properties dengan menggunakan Annotation
+  EnableConfigurationProperties
+* https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/context/properties/EnableConfigurationProperties.html 
+
