@@ -208,5 +208,10 @@
 * Secara default, Configuration Properties tidak akan berjalan jika kita tidak beritahukan ke Spring Boot Application
 * Kita perlu memberitahu bahwa kita membuat class Configuration Properties dengan menggunakan Annotation
   EnableConfigurationProperties
-* https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/context/properties/EnableConfigurationProperties.html 
+* https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/context/properties/EnableConfigurationProperties.html
+
+## Complex Configuration Properties
+
+* Configuration Properties juga mendukung Java Bean yang kompleks, misal yang berisikan Java Bean object lain
+* Hal ini membuat pembuatan Configuration Properties menjadi lebih mudah, karena tidak perlu kita lakukan secara manual
 
