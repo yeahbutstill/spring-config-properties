@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
+
 @SpringBootTest(classes = ConfigurationPropertiesTest.TestApplication.class)
 class ConfigurationPropertiesTest {
 
@@ -26,6 +28,31 @@ class ConfigurationPropertiesTest {
     Assertions.assertEquals("rahasia", properties.getDatabaseProperties().getPassword());
     Assertions.assertEquals("belajar", properties.getDatabaseProperties().getDatabase());
     Assertions.assertEquals("jdbc:belajar", properties.getDatabaseProperties().getUrl());
+  }
+
+  @Test
+  void testCollectionProperties() {
+    Assertions.assertEquals(
+        Arrays.asList("products", "customers", "categories"),
+        properties.getDatabaseProperties().getWhitelistTable());
+    Assertions.assertEquals(
+        100, properties.getDatabaseProperties().getMaxTablesSize().get("products"));
+    Assertions.assertEquals(
+        100, properties.getDatabaseProperties().getMaxTablesSize().get("customers"));
+    Assertions.assertEquals(
+        100, properties.getDatabaseProperties().getMaxTablesSize().get("categories"));
+  }
+
+  @Test
+  void testEmbeddedCollection() {
+    Assertions.assertEquals("default", properties.getDefaultRoles().get(0).getId());
+    Assertions.assertEquals("Default Role", properties.getDefaultRoles().get(0).getName());
+    Assertions.assertEquals("guest", properties.getDefaultRoles().get(1).getId());
+    Assertions.assertEquals("Guest Role", properties.getDefaultRoles().get(1).getName());
+    Assertions.assertEquals("admin", properties.getRoles().get("admin").getId());
+    Assertions.assertEquals("Admin Role", properties.getRoles().get("admin").getName());
+    Assertions.assertEquals("finance", properties.getRoles().get("finance").getId());
+    Assertions.assertEquals("Finance Role", properties.getRoles().get("finance").getName());
   }
 
   @SpringBootApplication

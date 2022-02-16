@@ -215,3 +215,13 @@
 * Configuration Properties juga mendukung Java Bean yang kompleks, misal yang berisikan Java Bean object lain
 * Hal ini membuat pembuatan Configuration Properties menjadi lebih mudah, karena tidak perlu kita lakukan secara manual
 
+## Collection Configuration Properties
+
+* Configuration Properties juga mendukung binding properties untuk jenis collection seperti List atau Map
+* Hal ini kadang bermanfaat ketika memang data yang kita butuhkan sangat kompleks, bisa Collection yang berisi data
+  sederhana, atau bahkan collection yang berisi Java Bean lagi
+
+## Embedded Collection
+
+* Configuration Properties juga mendukung jika kita membuat Java Bean di dalam collection
+
