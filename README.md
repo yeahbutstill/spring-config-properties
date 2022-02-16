@@ -293,3 +293,10 @@
 * banyak, ini sangat menyulitkan Spring Boot juga mendukung mengambil properties dari environment variable Hal ini
 * membuat kita lebih mudah, karena tidak harus semua properties dibuat ulang di file external properties, cukup yang
 * dibutuhkan aja Selain itu, kita juga bisa membuat default value ketika environment variable nya tidak ada
+
+## Mengubah Profile
+
+* Selain mengubah active profile menggunakan application properties, kita juga bisa menggunakan command line argument
+  untuk mengubah active profile
+* Kita bisa gunakan argument :
+  --spring.profiles.active=first,second 
