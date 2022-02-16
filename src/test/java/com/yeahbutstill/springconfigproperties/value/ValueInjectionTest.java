@@ -44,7 +44,7 @@ class ValueInjectionTest {
     @Getter
     public static class ApplicationProperties {
 
-      @Value("${spring.application.name}")
+      @Value("${application.name}")
       private String name;
 
       @Value("${application.version}")
