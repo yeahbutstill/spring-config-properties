@@ -299,4 +299,20 @@
 * Selain mengubah active profile menggunakan application properties, kita juga bisa menggunakan command line argument
   untuk mengubah active profile
 * Kita bisa gunakan argument :
-  --spring.profiles.active=first,second 
+  --spring.profiles.active=first,second
+
+## Yaml
+
+* Selain menggunakan file properties, Spring Boot juga mendukung penggunaan file Yaml
+* Caranya sangat mudah, kita bisa mengganti semua file properties yang kita gunakan menjadi file Yaml
+* File Yaml sangat mempermudah ketika kita membuat configuration yang sangat kompleks
+
+## Materi Selanjutnya
+
+* Spring Logging
+* Spring Validation
+* Spring Aspect Oriented Programming
+* Spring Async
+* Spring Data JPA
+* Spring Web MVC
+* Dan lain-lain
