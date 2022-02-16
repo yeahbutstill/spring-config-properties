@@ -225,3 +225,32 @@
 
 * Configuration Properties juga mendukung jika kita membuat Java Bean di dalam collection
 
+## Conversion
+
+* Saat kita menggunakan config properties di Spring, ada pertanyaan, bagaimana Spring melakukan konversi data yang ada
+  di properties file ke tipe data di Java?
+* Jawabannya adalah karena Spring memiliki mekanisme konversi tipe data.
+* Secara default, hampir semua tipe data umum di Java didukung, namun bagaimana jika tipe data yang kita buat sendiri?
+* Jika ada kasus seperti itu, kita bisa membuat class Conversion sendiri
+
+## Converter Interface
+
+* Semua konversi tipe data di Spring sudah dibuat standarisasinya, yaitu menggunakan interface Converter
+* https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/core/convert/converter/Converter.html
+
+## Default Converter
+
+* Secara default, Spring juga sudah menyediakan Converter untuk tipe data bawaan Java, seperti Number, Boolean, Date,
+  Calendar, Duration, dan lain-lain
+* Kita bisa lihat secara semua class turunan dari Converter
+
+## Custom Converter
+
+* Jika ada kasus yang akhirnya mengharuskan kita membuat converter sendiri, kita bisa dengan mudah membuat class turunan
+  interface Converter
+* Misal kita coba buat Converter untuk tipe data String ke Date
+
+## Kenapa Error?
+
+* Secara default, jika kita ingin menggunakan custom Converter, kita harus registrasikan ke ConversionService
+* ConversionService akan kita bahas di materi selanjutnya
