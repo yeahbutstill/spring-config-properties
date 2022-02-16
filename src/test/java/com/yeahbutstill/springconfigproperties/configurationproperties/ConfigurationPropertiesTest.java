@@ -1,12 +1,17 @@
 package com.yeahbutstill.springconfigproperties.configurationproperties;
 
+import com.yeahbutstill.springconfigproperties.converter.StringToDateConverter;
 import com.yeahbutstill.springconfigproperties.properties.ApplicationProperties;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.boot.convert.ApplicationConversionService;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
+import org.springframework.core.convert.ConversionService;
 
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -18,8 +23,11 @@ class ConfigurationPropertiesTest {
 
   @Autowired private ApplicationProperties properties;
 
+  @Autowired private ConversionService conversionService;
+
   @Test
   void testConfigurationProperties() {
+
     Assertions.assertEquals("Belajar Spring Boot", properties.getName());
     Assertions.assertEquals(1, properties.getVersion());
     Assertions.assertFalse(properties.isProductionMode());
@@ -27,6 +35,7 @@ class ConfigurationPropertiesTest {
 
   @Test
   void testDatabaseProperties() {
+
     Assertions.assertEquals("dani", properties.getDatabaseProperties().getUsername());
     Assertions.assertEquals("rahasia", properties.getDatabaseProperties().getPassword());
     Assertions.assertEquals("belajar", properties.getDatabaseProperties().getDatabase());
@@ -35,6 +44,7 @@ class ConfigurationPropertiesTest {
 
   @Test
   void testCollectionProperties() {
+
     Assertions.assertEquals(
         Arrays.asList("products", "customers", "categories"),
         properties.getDatabaseProperties().getWhitelistTable());
@@ -48,6 +58,7 @@ class ConfigurationPropertiesTest {
 
   @Test
   void testEmbeddedCollection() {
+
     Assertions.assertEquals("default", properties.getDefaultRoles().get(0).getId());
     Assertions.assertEquals("Default Role", properties.getDefaultRoles().get(0).getName());
     Assertions.assertEquals("guest", properties.getDefaultRoles().get(1).getId());
@@ -65,12 +76,31 @@ class ConfigurationPropertiesTest {
 
   @Test
   void testCustomConverter() {
+
     Date dateExpireDate = properties.getDateExpireDate();
     var dateFormat = new SimpleDateFormat("dd-MM-yyyy");
     Assertions.assertEquals("16-02-2021", dateFormat.format(dateExpireDate));
   }
 
+  @Test
+  void testConversionService() {
+    Assertions.assertTrue(conversionService.canConvert(String.class, Duration.class));
+    Assertions.assertTrue(conversionService.canConvert(String.class, Date.class));
+    Assertions.assertEquals(
+        Duration.ofSeconds(10), conversionService.convert("10s", Duration.class));
+  }
+
   @SpringBootApplication
   @EnableConfigurationProperties({ApplicationProperties.class})
-  public static class TestApplication {}
+  @Import(StringToDateConverter.class)
+  public static class TestApplication {
+
+    @Bean
+    public ConversionService conversionService(StringToDateConverter stringToDateConverter) {
+
+      ApplicationConversionService conversionService = new ApplicationConversionService();
+      conversionService.addConverter(stringToDateConverter);
+      return conversionService;
+    }
+  }
 }
